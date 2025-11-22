@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tejaswi K J — Portfolio</title>
+  <meta name="description" content="Personal portfolio — edit contents and links" />
+
+  <style>
+    :root{
+      --bg:#0b0e13;
+      --card:#0f1720;
+      --muted:#9aa3b2;
+      --accent1:#7c5cff; /* purple */
+      --accent2:#38d3ff; /* blue */
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      --fw-regular: 400;
+      --fw-bold: 700;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(124,92,255,0.06), transparent),
+                  radial-gradient(900px 400px at 90% 90%, rgba(56,211,255,0.03), transparent),
+                  var(--bg);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding-bottom:80px;
+    }
+
+    /* NAV */
+    header{
+      position:fixed;
+      top:16px;left:50%;transform:translateX(-50%);
+      width:min(1100px,94%);
+      z-index:60;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:999px;
+      padding:10px 18px;
+      display:flex;align-items:center;justify-content:space-between;
+      box-shadow:0 6px 30px rgba(2,6,23,0.6);
+      backdrop-filter: blur(6px);
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#061223}
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600;font-size:14px}
+    nav a.active, nav a:hover{color:var(--accent2);background:linear-gradient(90deg, rgba(124,92,255,0.06), rgba(56,211,255,0.03));}
+    .socials{display:flex;gap:10px;align-items:center}
+    .icon-btn{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;background:var(--glass);border:1px solid rgba(255,255,255,0.02)}
+    .resume-btn{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:8px 12px;border-radius:10px;color:#061223;font-weight:700;text-decoration:none}
+
+    /* LAYOUT */
+    .container{width:min(1100px,94%);margin:120px auto 40px;display:grid;grid-template-columns:1fr;gap:28px}
+    .hero{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border-radius:var(--radius);padding:40px;display:flex;gap:28px;align-items:center;box-shadow:0 10px 40px rgba(2,6,23,0.6)
+    }
+    .hero-left{flex:1}
+    .intro{font-size:14px;color:var(--muted);margin-bottom:12px}
+    h1{font-size:34px;margin:0 0 8px}
+    h1 small{display:block;font-size:16px;color:var(--muted);font-weight:500}
+    .cta{margin-top:18px;display:flex;gap:12px;align-items:center}
+    .primary{padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#061223;font-weight:700;text-decoration:none}
+    .ghost{padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);color:var(--muted);text-decoration:none}
+    .hero-right{width:320px}
+    .card-preview{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px}
+
+    /* SECTIONS */
+    section{padding:6px}
+    .section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);box-shadow:0 6px 18px rgba(2,6,23,0.5)}
+    .card h3{margin:0 0 8px}
+    .chip{display:inline-block;padding:6px 8px;border-radius:999px;font-size:12px;background:rgba(255,255,255,0.02);color:var(--muted)}
+    .muted{color:var(--muted);font-size:14px}
+
+    footer{margin-top:18px;text-align:center;color:var(--muted)}
+
+    /* Glow + animations */
+    .glow{position:relative}
+    .glow::after{content:'';position:absolute;inset:-2px;background:linear-gradient(90deg,var(--accent1),var(--accent2));filter:blur(24px);opacity:0.18;border-radius:12px;z-index:-1}
+    .fade-up{opacity:0;transform:translateY(8px);transition:opacity .6s ease,transform .6s ease}
+    .fade-up.show{opacity:1;transform:none}
+    a:hover{transform:translateY(-2px);transition:transform .18s ease}
+
+    /* RESPONSIVE */
+    @media (max-width:780px){
+      header{left:8px;right:8px;transform:none;width:auto}
+      .hero{flex-direction:column}
+      .hero-right{width:100%}
+      nav{display:none}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+<div class="logo" style="padding:0">
+  <img src="Tej.jpg" 
+       alt="profile"
+       style="width:44px; height:44px; border-radius:10px; object-fit:cover; object-position: center 20%;">
+</div>
+
+        <div style="font-weight:700">Tejaswi K J</div>
+        <div style="font-size:12px;color:var(--muted)">Aspiring Designer & Developer</div>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a class="resume-btn" href="/Tej's Resume.pdf" target="_blank">Resume</a>
+    </nav>
+
+    <div class="socials">
+      <!-- Edit these hrefs to your profiles -->
+      <a class="icon-btn" href="https://github.com/your-username" target="_blank" title="GitHub">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.38 7.86 10.9.57.1.78-.25.78-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.33.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.16 1.18a11 11 0 0 1 5.75 0c2.2-1.5 3.16-1.18 3.16-1.18.62 1.59.23 2.77.11 3.06.73.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.4-5.27 5.69.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.79.56C20.71 21.38 24 17.08 24 12c0-6.35-5.15-11.5-12-11.5z" fill="currentColor"/></svg>
+      </a>
+      <a class="icon-btn" href="https://linkedin.com/in/your-username" target="_blank" title="LinkedIn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.4 8h4.21V24H.4zM8.5 8h4.04v2.16h.06c.56-1.06 1.93-2.16 3.98-2.16 4.26 0 5.05 2.8 5.05 6.44V24h-4.21v-7.08c0-1.69-.03-3.86-2.35-3.86-2.36 0-2.72 1.84-2.72 3.74V24H8.5z" fill="currentColor"/></svg>
+      </a>
+      <a class="icon-btn" href="https://instagram.com/your-username" target="_blank" title="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.5A4.5 4.5 0 1 0 16.5 13 4.5 4.5 0 0 0 12 8.5zM19.5 6a1 1 0 1 0 1 1 1 1 0 0 0-1-1z" fill="currentColor"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="home" class="hero fade-up">
+      <div class="hero-left">
+        <div class="intro">Hi, I'm Tejaswi K J — Computer Science student & developer.</div>
+        <h1>Transforming Ideas into Scalable, Impactful Solutions <small>— Java | Android | ML | Web</small></h1>
+        <p class="muted">I solve problems with code, build apps and experiment with ML models.</p>
+
+        <div class="cta">
+          <a class="primary" href="#projects">View Projects</a>
+          <a class="ghost" href="/Tej's Resume.pdf" target="_blank">Download Resume</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="card-preview glow">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <div>
+              <div style="font-weight:700">Featured Project</div>
+              <div class="muted" style="font-size:13px">******</div>
+            </div>
+            <div class="chip">Java</div>
+          </div>
+          <div class="muted" style="font-size:13px">Comming Soon...!</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-title"><h2>About</h2><div class="muted">Quick summary</div></div>
+      <div class="card fade-up" style="padding:20px;display:flex;gap:18px;align-items:flex-start">
+        <div style="flex:1">
+          <p class="muted">I’m a Computer Science student with a strong interest in building efficient, user-focused software. I enjoy working across Web Development, Android, Machine Learning, and core CS concepts like Operating Systems and Algorithms. My approach is simple - writing clean code, solving problems, and constantly keep learning. I’ve worked on projects ranging from mobile apps to intelligent systems, and I’m always exploring new technologies to strengthen both my logic and creativity..</p>
+          <ul style="color:var(--muted);margin-top:12px">
+            <li>Data Structures & Algorithms</li>
+            <li>Operating Systems & Computer Architecture</li>
+            <li>Android & Java | Web development in HTML, CSS, JavaScript</li>
+          </ul>
+        </div>
+        <div style="width:220px">
+          <div style="background:linear-gradient(135deg,var(--accent1),var(--accent2));padding:12px;border-radius:12px;text-align:center;color:#061223;font-weight:700">Quick Stats</div>
+          <div style="margin-top:12px;color:var(--muted);font-size:14px">Projects: 4 • Internships: 1 • Languages: Java, Python</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-title"><h2>Projects</h2><div class="muted">A few things I've built</div></div>
+      <div class="cards">
+        <!-- Project cards: edit these placeholders -->
+        <article class="card fade-up">
+          <h3>InterPrep </h3>
+          <div class="muted">
+            • Developed An interactive platform to help the students to prepare for the interviews with practice questions and links. 
+            • Implemented user friendly interface using java that enable smooth user interactions. 
+            • Secured a Database connection between MySQL & Java. .</div>
+          <div style="margin-top:12px;display:flex;gap:8px;align-items:center;justify-content:space-between">
+            <div class="chip">Java | MySQL</div>
+            <div style="display:flex;gap:8px">
+              <a class="icon-btn" href="#" title="Repo (edit)">
+                <img src="git.png" alt="GitHub" style="width:18px; height:18px;">
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card fade-up">
+          <h3>IoT based smart home monitoring network design </h3>
+          <div class="muted">
+            • Configured routing, DHCP, and DNS services to enable remote monitoring and smart device communication across WAN and LAN. 
+            • Demonstrated automation with condition-based triggers (e.g., motion → light ON). </div>
+          <div style="margin-top:12px;display:flex;gap:8px;align-items:center;justify-content:space-between">
+            <div class="chip">Cisco Packet Tracer | IoT devices | Routers | DHCP & DNS Servers & Network protocols.</div>
+            <div style="display:flex;gap:8px">
+              <a class="icon-btn" href="#" title="Repo (edit)">
+                <img src="git.png" alt="GitHub" style="width:18px; height:18px;">
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card fade-up">
+          <h3>Bengaluru Traffic Data Analysis </h3>
+          <div class="muted">
+            • Developed the Machine learning agent to analyze the provided Bengaluru’s Traffic Data for future predictions. 
+            • Implemented the “Fuzzy c Means Clustering” Algorithm to cluster the data and visualizing them using the plotlib library. </div>
+          <div style="margin-top:12px;display:flex;gap:8px;align-items:center;justify-content:space-between">
+            <div class="chip">Python | ML | Fuzzy C Means Clustering</div>
+            <div style="display:flex;gap:8px">
+              <a class="icon-btn" href="#" title="Repo (edit)">
+                <img src="git.png" alt="GitHub" style="width:18px; height:18px;">
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-title"><h2>Contact</h2><div class="muted">Say Hello👋 - I respond to emails</div></div>
+
+      <div class="card fade-up" style="display:flex;gap:18px;flex-wrap:wrap;align-items:center">
+        <div style="flex:1;min-width:260px">
+          <p class="muted">Prefer email? Add your email address into the mailto link below in the HTML so the button opens the mail client directly.</p>
+          <a class="primary" href="mailto:tejakj1098@gmail.com">Email Me</a>
+        </div>
+        <div style="min-width:220px;text-align:right">
+          <div class="muted">Socials</div>
+          <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+            <a class="icon-btn" href="https://github.com/Tejaswi-K-J" target="_blank">
+               <img src="git.png" alt="GitHub" style="width:18px; height:18px;">
+            </a>
+            <a class="icon-btn" href="https://linkedin.com/in/tejaswi-k-j" target="_blank">
+               <img src="LinkedIn.png" alt="LinkedIn" style="width:18px; height:18px;">
+            </a>
+            <a class="icon-btn" href="https://instagram.com/tejaswi_shaiva" target="_blank">
+               <img src="insta.jpg" alt="Instagram" style="width:18px; height:18px;">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="muted">Designing, building & evolving digital experiences • © <span id="year"></span> Tejaswi K J</div>
+    </footer>
+  </main>
+
+  <script>
+    // small script: smooth reveal on scroll + year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('show');
+        }
+      })
+    },{threshold:.08});
+
+    document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+    // add hash-based active nav
+    const navLinks = document.querySelectorAll('header nav a');
+    function setActive(){
+      const hash = location.hash || '#home';
+      navLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href')===hash));
+    }
+    window.addEventListener('hashchange', setActive);
+    setActive();
+  </script>
+
+</body>
+</html>
